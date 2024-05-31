@@ -14,12 +14,14 @@ return new class extends Migration
         Schema::create('job_models', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('category_id')->constrained();
             $table->string('title');
             $table->tinyText('description');
             $table->string('company_name');
             $table->string('location');
-            $table->tinyInteger('salary');
+            $table->bigInteger('salary');
             $table->string('job_type');
+            $table->string('application_deadline');
             $table->timestamps();
         });
     }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('job_id')->constrained();
             $table->tinyText('cover_letter');
             $table->string('resume');
+            $table->string('status')->default(0);
             $table->timestamps();
         });
     }

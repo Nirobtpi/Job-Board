@@ -113,7 +113,7 @@
                                         </div>
                                         <div class="col-12">
                                             <p class="small mb-0">Already have an account? <a
-                                                    href="{{ route('user.login') }}">Log in</a></p>
+                                                    href="{{ route('login') }}">Log in</a></p>
                                         </div>
                                     </form>
 

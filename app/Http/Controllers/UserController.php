@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     function login(){
+         if(Auth::check()){
+            return view('dashboard.dashboard');
+        }
         return view('admin.auth.login');
     }
     function register(){
