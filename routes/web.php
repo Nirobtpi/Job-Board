@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,18 +18,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('frontend.index');
+// });
 Route::get('admin', function () {
     return view('dashboard.dashboard');
 });
 
+Route::get('/login',[UserController::class,'login'])->name('login');
+Route::post('/login',[UserController::class,'userLogin'])->name('user.user_login');
+Route::get('/register',[UserController::class,'register'])->name('user.register');
+Route::post('/register',[UserController::class,'userRegister'])->name('user.user_register');
+
 Route::prefix('admin')->group(function(){
-    Route::get('/login',[UserController::class,'login'])->name('login');
-    Route::post('/login',[UserController::class,'userLogin'])->name('user.user_login');
-    Route::get('/register',[UserController::class,'register'])->name('user.register');
-    Route::post('/register',[UserController::class,'userRegister'])->name('user.user_register');
+
 
     Route::group(['middleware'=>['auth']], function(){
         Route::get('dashboard',[AdminDashboardController::class,'adminDashboard'])->name('admin.dashboard');
@@ -50,3 +53,9 @@ Route::prefix('admin')->group(function(){
         Route::post('edit-job/{id}',[EmployerController::class,'edit_Job'])->name('job.edit');
     });
 });
+
+Route::get('/',[FrontEndController::class,'home'])->name('home');
+
+ Route::group(['middleware'=>['auth']], function(){
+        Route::get('/apply/{id}',[FrontEndController::class,'apply'])->name('apply');
+ });

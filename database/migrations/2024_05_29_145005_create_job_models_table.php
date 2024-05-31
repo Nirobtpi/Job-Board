@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('category_id')->constrained();
             $table->string('title');
-            $table->tinyText('description');
+            $table->text('description');
             $table->string('company_name');
             $table->string('location');
             $table->bigInteger('salary');
