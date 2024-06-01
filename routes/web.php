@@ -3,8 +3,10 @@
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\UserController;
+use App\Models\Application;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,9 +27,9 @@ Route::get('admin', function () {
     return view('dashboard.dashboard');
 });
 
-Route::get('/login',[UserController::class,'login'])->name('login');
+Route::get('user/login',[UserController::class,'login'])->name('login');
 Route::post('/login',[UserController::class,'userLogin'])->name('user.user_login');
-Route::get('/register',[UserController::class,'register'])->name('user.register');
+Route::get('user/register',[UserController::class,'register'])->name('user.register');
 Route::post('/register',[UserController::class,'userRegister'])->name('user.user_register');
 
 Route::prefix('admin')->group(function(){
@@ -55,7 +57,13 @@ Route::prefix('admin')->group(function(){
 });
 
 Route::get('/',[FrontEndController::class,'home'])->name('home');
+Route::get('job/{id}/{name}',[FrontEndController::class,'singleJob'])->name('job');
 
  Route::group(['middleware'=>['auth']], function(){
-        Route::get('/apply/{id}',[FrontEndController::class,'apply'])->name('apply');
+        Route::get('/apply/{id}',[ApplicationController::class,'apply'])->name('apply');
+        Route::post('/apply/{id}',[ApplicationController::class,'applyJob'])->name('applyJob');
+        Route::get('/apply-list',[ApplicationController::class,'applyList'])->name('applyList');
+        Route::get('/user/account',[FrontEndController::class,'userAccount'])->name('account');
+        Route::get('user/logout',[UserController::class,'userlogout'])->name('user.logout');
  });
+ Route::get('/app',[ApplicationController::class,'app']);

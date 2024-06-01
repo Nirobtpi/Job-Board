@@ -9,4 +9,8 @@ class Application extends Model
 {
     use HasFactory;
      protected $guarded=[];
+
+      function job(){
+        return $this->belongsTo(JobModel::class);
+    }
 }

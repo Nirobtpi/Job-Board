@@ -49,7 +49,7 @@ class UserController extends Controller
             if(Auth::user()->is_admin == 'employer'){
                 return redirect()->route('admin.dashboard');
             }else{
-                return 'Ok';
+                return redirect()->route('home');
             }
         }else{
             return back()->with('error','Please Enter A valid Email Or Password!');
@@ -60,5 +60,9 @@ class UserController extends Controller
     function logout(){
         Auth::logout();
         return redirect()->route('login');
+    }
+    function userlogout(){
+        Auth::logout();
+        return redirect()->route('home');
     }
 }

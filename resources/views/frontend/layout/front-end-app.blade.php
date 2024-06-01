@@ -27,13 +27,14 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/nice-select.css')}}">
     <link rel="stylesheet" href="{{ asset('frontend/css/animate.min.css')}}">
     <link rel="stylesheet" href="{{ asset('frontend/css/owl.carousel.css')}}">
+
+    @stack('style')
     <link rel="stylesheet" href="{{ asset('frontend/css/main.css')}}">
     <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/57/2/common.js">
     </script>
     <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/57/2/util.js">
     </script>
 </head>
-
 <body style="display: block;"><button type="button" id="mobile-nav-toggle"><i class="lnr lnr-menu"></i></button>
 
     <header id="header">
@@ -57,8 +58,15 @@
                                 <li><a href="single.html">single</a></li>
                             </ul>
                         </li>
-                        <li><a class="ticker-btn" href="#">Signup</a></li>
-                        <li><a class="ticker-btn" href="#">Login</a></li>
+                        @if(Auth::check())
+                        <li><a class="ticker-btn" href="{{ route('account') }}">Accoint</a></li>
+                        @endif
+                        @if(!Auth::check())
+                        <li><a class="ticker-btn" href="{{ route('user.register') }}">Signup</a></li>
+                        <li><a class="ticker-btn" href="{{ route('login') }}">Login</a></li>
+                        @else
+                         <li><a class="ticker-btn" href="{{ route('user.logout') }}">Logout</a></li>
+                         @endif
                     </ul>
                 </nav><!-- #nav-menu-container -->
             </div>
@@ -169,7 +177,7 @@
     <script src="{{ asset('frontend/js/mail-script.js')}}"></script>
     <script src="{{ asset('frontend/js/main.js')}}"></script>
 
-
+    @stack('script')
 
 
 
