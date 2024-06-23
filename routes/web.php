@@ -67,3 +67,4 @@ Route::get('job/{id}/{name}',[FrontEndController::class,'singleJob'])->name('job
         Route::get('user/logout',[UserController::class,'userlogout'])->name('user.logout');
  });
  Route::get('/app',[ApplicationController::class,'app']);
+ Route::get('search',[FrontEndController::class,'search'])->name('search');

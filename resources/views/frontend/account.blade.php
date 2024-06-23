@@ -22,8 +22,8 @@
                         <div class="card-body shadaow">
                             <img src="{{ asset('assets/img/card.jpg') }}" class="img-thumbnail" alt="Profile-picture">
                             <div class="content mt-3">
-                                <h2 class="text-info mb-2">Name</h2>
-                                <p>Degisnation</p>
+                                <h2 class="text-info mb-2">{{ Auth::user()->name }}</h2>
+                                <p>{{ ucwords(Auth::user()->is_admin) }}</p>
                                 <div class="user-menu">
                                     <ul class="text-black">
                                         <li><a href="">Setting</a></li>
@@ -49,7 +49,7 @@
                                 </tr>
                                 <tr>
                                     <td>User Type :</td>
-                                    <td>{{ Auth::user()->is_admin == 'job_seeker' ? 'Job Seeker' : 'Null' }}</td>
+                                    <td>{{ Auth::user()->is_admin == 'job_seeker' ? 'Job Seeker' : 'Employer' }}</td>
                                 </tr>
                                 <tr>
                                     <td><a href="" class="btn btn-sm btn-info">Update User</a></td>

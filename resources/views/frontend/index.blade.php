@@ -10,7 +10,7 @@
                     <h1 class="text-white">
                         <span>{{ $totalJob }}+</span> Jobs posted
                     </h1>
-                    <form action="search.html" class="serach-form-area">
+                    <form action="{{ route('search') }}" class="serach-form-area" method="GET">
                         <div class="row justify-content-center form-wrap">
                             <div class="col-lg-4 form-cols">
                                 <input type="text" class="form-control" name="search"
@@ -39,25 +39,15 @@
                                                 <div class="col-lg-3 form-cols">
                                                     <div class="default-select" id="default-selects2">
                                                         <select style="display: none;">
-                                                            <option value="1">All Category</option>
-                                                            <option value="2">Medical</option>
-                                                            <option value="3">Technology</option>
-                                                            <option value="4">Goverment</option>
-                                                            <option value="5">Development</option>
+                                                            <option selected disabled>All Category</option>
+                                                            @foreach ($categories as $category)
+                                                                <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                                            @endforeach
                                                         </select>
-                                                        <div class="nice-select" tabindex="0"><span class="current">All Category</span>
-                                                            <ul class="list">
-                                                                <li data-value="1" class="option selected">All Category</li>
-                                                                <li data-value="2" class="option">Medical</li>
-                                                                <li data-value="3" class="option">Technology</li>
-                                                                <li data-value="4" class="option">Goverment</li>
-                                                                <li data-value="5" class="option">Development</li>
-                                                            </ul>
-                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-2 form-cols">
-                                                    <button type="button" class="btn btn-info">
+                                                    <button type="submit"  class="btn btn-info">
                                                         <span class="lnr lnr-magnifier"></span> Search
                                                     </button>
                                                 </div>

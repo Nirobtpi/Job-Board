@@ -35,5 +35,10 @@ class FrontEndController extends Controller
         // $user=User::where('is_admin','job_seeker')->where('id',Auth::user()->id)->get();
         return view('frontend.account');
     }
+
+    function search(Request $request){
+        $search= $request->search;
+       return JobModel::where('title','LIKE',"%{$search}%")->get();;
+    }
     
 }
