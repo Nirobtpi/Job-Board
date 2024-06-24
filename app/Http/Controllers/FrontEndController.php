@@ -36,9 +36,29 @@ class FrontEndController extends Controller
         return view('frontend.account');
     }
 
-    function search(Request $request){
-        $search= $request->search;
-       return JobModel::where('title','LIKE',"%{$search}%")->get();;
+    public function search(Request $request)
+    {
+        $title = $request->input('title');
+        $location = $request->input('location');
+        $category = $request->input('category');
+
+        $query = JobModel::query();
+
+        if ($title) {
+            $query->where('title', 'LIKE', "%{$title}%");
+        }
+
+        if ($location) {
+            $query->where('location', 'LIKE', "%{$location}%");
+        }
+
+        if ($category) {
+            $query->where('category_id','LIKE', "%{$category}%");
+        }
+
+        $alljob = $query->get();
+
+        return view('frontend.search', compact('alljob'));
     }
     
 }
