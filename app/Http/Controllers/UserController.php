@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use PhpParser\Node\Stmt\Return_;
 
 class UserController extends Controller
 {
@@ -44,6 +45,7 @@ class UserController extends Controller
             'email'=>['required'],
             'password'=>['required'],
         ]);
+        // return Auth::user()->name;
 
         if(Auth::attempt(['email'=>$request->email,'password' =>$request->password])){
             if(Auth::user()->is_admin == 'employer'){

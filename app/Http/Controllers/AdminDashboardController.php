@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\Auth;
 class AdminDashboardController extends Controller
 {
     function adminDashboard(){
-        return view('dashboard.dashboard');
+        if(Auth::user()->is_admin != 'employer'){
+            return redirect()->route('home');
+        }else{
+            return view('dashboard.dashboard');
+        }
+        
     }
 
     

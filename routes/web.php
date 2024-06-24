@@ -23,9 +23,9 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('frontend.index');
 // });
-Route::get('admin', function () {
-    return view('dashboard.dashboard');
-});
+// Route::get('admin', function () {
+//     return view('dashboard.dashboard');
+// });
 
 Route::get('user/login',[UserController::class,'login'])->name('login');
 Route::post('/login',[UserController::class,'userLogin'])->name('user.user_login');
