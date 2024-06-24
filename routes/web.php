@@ -53,6 +53,9 @@ Route::prefix('admin')->group(function(){
         Route::get('edit-job/{id}',[EmployerController::class,'editJob'])->name('job.edit_url');
         Route::get('delete-job/{id}',[EmployerController::class,'delete'])->name('job.delete');
         Route::post('edit-job/{id}',[EmployerController::class,'edit_Job'])->name('job.edit');
+
+        Route::get('application',[ApplicationController::class,'showApplication'])->name('admin.application');
+        Route::post('application/approve/{id}',[ApplicationController::class,'Approve'])->name('admin.approve');
     });
 });
 

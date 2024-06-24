@@ -49,5 +49,21 @@ class ApplicationController extends Controller
 
         return redirect()->route('applyList');
     }
+
+
+    // Admin show application 
+
+    public function showApplication(){
+
+        $applications=Application::with('job','user')->get();
+        return view('admin.application.show-application', compact('applications'));
+    }
+
+    function Approve($id){
+        Application::findOrFail($id)->update([
+            'status'=>1,
+        ]);
+        return back()->with('success','Application Approved');
+    }
     
 }

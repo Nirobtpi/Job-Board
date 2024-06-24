@@ -1,7 +1,5 @@
 @extends('admin.app')
 
-@section('content')
-    @extends('admin.app')
 @section('title')
     {{ 'Job Category' }}
 @endsection
@@ -34,7 +32,7 @@
                                 </div>
                                 
                                 <div>
-                                    <button type="submit" class="btn btn-primary">Create Job</button>
+                                    <button type="submit" class="btn btn-primary">Create Category</button>
                                 </div>
                             </form>
 

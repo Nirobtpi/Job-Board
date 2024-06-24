@@ -1003,13 +1003,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#components-nav21" data-bs-toggle="collapse"
                     href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Withdraw</span><i
+                    <i class="bi bi-menu-button-wide"></i><span>Application</span><i
                         class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="components-nav21" class="nav-content collapse " data-bs-parent="#sidebar-nav2">
                     <li>
-                        <a href="">
-                            <i class="bi bi-circle"></i><span>Show All Withdraw</span>
+                        <a href="{{ route('admin.application') }}">
+                            <i class="bi bi-circle"></i><span>Show All Application</span>
                         </a>
                     </li>
                 </ul>
